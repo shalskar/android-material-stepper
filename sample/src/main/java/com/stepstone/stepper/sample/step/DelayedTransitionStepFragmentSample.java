@@ -29,6 +29,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.stepstone.stepper.BlockingStep;
 import com.stepstone.stepper.StepperLayout;
@@ -114,6 +115,12 @@ public class DelayedTransitionStepFragmentSample extends Fragment implements Blo
                 callback.goToNextStep();
             }
         }, 2000L);
+    }
+
+    @Override
+    public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
+        Toast.makeText(this.getContext(), "Your custom back action", Toast.LENGTH_SHORT).show();
+        callback.goToPrevStep();
     }
 
     @Override

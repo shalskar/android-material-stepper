@@ -82,7 +82,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:visibility="gone"
+            android:alpha="0"
             tools:text="@string/ms_complete"
             tools:textColor="@color/ms_bottomNavigationButtonTextColor"
             tools:visibility="visible" />

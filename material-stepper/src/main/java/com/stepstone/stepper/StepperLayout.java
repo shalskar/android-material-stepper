@@ -47,6 +47,7 @@ import com.stepstone.stepper.internal.RightNavigationButton;
 import com.stepstone.stepper.internal.TabsContainer;
 import com.stepstone.stepper.type.AbstractStepperType;
 import com.stepstone.stepper.type.StepperTypeFactory;
+import com.stepstone.stepper.util.AnimationUtil;
 import com.stepstone.stepper.util.TintUtil;
 
 /**
@@ -532,9 +533,9 @@ public class StepperLayout extends LinearLayout implements TabsContainer.TabItem
         mPager.setCurrentItem(newStepPosition);
         boolean isLast = isLastPosition(newStepPosition);
         boolean isFirst = newStepPosition == 0;
-        mNextNavigationButton.setVisibility(isLast ? View.GONE : View.VISIBLE);
-        mCompleteNavigationButton.setVisibility(!isLast ? View.GONE : View.VISIBLE);
-        mBackNavigationButton.setVisibility(isFirst && !mShowBackButtonOnFirstStep ? View.GONE : View.VISIBLE);
+        AnimationUtil.animateView(mNextNavigationButton, !isLast);
+        AnimationUtil.animateView(mCompleteNavigationButton, isLast);
+        AnimationUtil.animateView(mBackNavigationButton, !isFirst || mShowBackButtonOnFirstStep);
 
         if (!isLast) {
             int nextButtonTextForStep = mStepAdapter.getNextButtonText(newStepPosition);
